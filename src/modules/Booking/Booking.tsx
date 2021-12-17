@@ -1,7 +1,8 @@
 import { ChangeEvent, useState } from "react";
 import Select from "../../components/Select";
-import Date from "../../components/Date";
+import DatePicker from "../../components/DatePicker";
 import styles from "./Booking.module.css";
+import { parseStringToDate } from "../../utils/parseStringToDate";
 
 const citiesMock = [
   "Chihuahua",
@@ -14,14 +15,11 @@ const citiesMock = [
   "Zacatecas",
 ];
 
-// TODO: Create Logic handler for date pickers.
-// TODO: Continue with the booking form.
-
 const Booking = () => {
   const [originCity, setOriginCity] = useState<string>("");
   const [destinationCity, setDestinationCity] = useState<string>("");
   const [startDate, setStartDate] = useState<Date | undefined>();
-  const [endDate, setEnddDate] = useState<Date | undefined>();
+  const [endDate, setEndDate] = useState<Date | undefined>();
 
   const availableDestinationCities = citiesMock.filter(
     (cities) => cities !== originCity
@@ -50,7 +48,13 @@ const Booking = () => {
     }
   };
 
-  const handleDates = (event: ChangeEvent<HTMLInputElement>) => void {};
+  const handleStartDate = (event: ChangeEvent<HTMLInputElement>): void => {
+    setStartDate(parseStringToDate(event.target.value));
+  };
+
+  const handleEndDate = (event: ChangeEvent<HTMLInputElement>): void => {
+    setEndDate(parseStringToDate(event.target.value));
+  };
 
   return (
     <div className={styles.bookingContainer}>
@@ -72,21 +76,21 @@ const Booking = () => {
         onChange={destinationCityHandler}
         containerClassName={styles.selectContainer}
       />
-      <Date
+      <DatePicker
         label="Salida"
         error={false}
         errorMessage="Selecciona una fecha válida"
-        containerClassName={styles.dateContainer}
+        containerClassName={styles.DatePickerContainer}
         max={endDate}
-        onChange={}
+        onChange={handleStartDate}
       />
-      <Date
+      <DatePicker
         label="Regreso"
         error={false}
         errorMessage="Selecciona una fecha válida"
         containerClassName={styles.dateContainer}
         min={startDate}
-        onChange={}
+        onChange={handleEndDate}
       />
     </div>
   );
