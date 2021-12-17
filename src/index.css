@@ -1,0 +1,21 @@
+:root {
+  --main-color: #0361e4;
+  --main-color-shadow: rgba(0, 0, 0, 0.1);
+  --error-color: rgb(255, 0, 0);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "CircularXX-Regular", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

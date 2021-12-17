@@ -1,0 +1,12 @@
+.bookingContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selectContainer {
+  width: 28%;
+}
+
+.dateContainer {
+  width: 20%;
+}
