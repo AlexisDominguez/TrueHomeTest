@@ -1,6 +1,6 @@
 import { FC, ChangeEvent } from "react";
 import styles from "./DatePicker.module.css";
-import { STANDARD_INPUT_DATE_FORMAT } from "../../format";
+import { STANDARD_INPUT_DATE_FORMAT } from "../../constants";
 import moment from "moment";
 
 interface IDateProps {

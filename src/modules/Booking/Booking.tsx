@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import Select from "../../components/Select";
 import DatePicker from "../../components/DatePicker";
+import InputNumber from "../../components/InputNumber";
 import styles from "./Booking.module.css";
 import { parseStringToDate } from "../../utils/parseStringToDate";
 
@@ -20,6 +21,7 @@ const Booking = () => {
   const [destinationCity, setDestinationCity] = useState<string>("");
   const [startDate, setStartDate] = useState<Date | undefined>();
   const [endDate, setEndDate] = useState<Date | undefined>();
+  const [passengers, setPassengers] = useState<number | string>(1);
 
   const availableDestinationCities = citiesMock.filter(
     (cities) => cities !== originCity
@@ -56,6 +58,14 @@ const Booking = () => {
     setEndDate(parseStringToDate(event.target.value));
   };
 
+  const handlePassengers = (event: ChangeEvent<HTMLInputElement>): void => {
+    if (Number.isInteger(Number(event.target.value))) {
+      setPassengers(Number(event.target.value) || "");
+    }
+  };
+
+  const numberOfPassengers = Number(passengers);
+
   return (
     <div className={styles.bookingContainer}>
       <Select
@@ -91,6 +101,23 @@ const Booking = () => {
         containerClassName={styles.dateContainer}
         min={startDate}
         onChange={handleEndDate}
+      />
+      <InputNumber
+        min={0}
+        max={9}
+        step={1}
+        value={passengers}
+        onChange={handlePassengers}
+        containerClassName={styles.inputNumberContainer}
+        label="Número de pasajeros"
+        error={numberOfPassengers < 1 || numberOfPassengers > 8}
+        errorMessage={
+          numberOfPassengers < 1
+            ? "El número mínimo de pasajeros es 1"
+            : numberOfPassengers > 8
+            ? "El número máximo de pasageros es 8"
+            : ""
+        }
       />
     </div>
   );
