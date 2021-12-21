@@ -1,0 +1,32 @@
+.bookingFormContainer {
+  margin: 1.5rem;
+  width: auto;
+}
+
+.bookingFormNameInputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bookingFromInputContainer {
+  width: 30%;
+  margin: 1rem 0;
+}
+
+.bookingFormInputs {
+  margin: 1rem 0;
+}
+
+.bookingFormTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bookingFormSubTitle {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}

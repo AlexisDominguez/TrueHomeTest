@@ -1,0 +1,27 @@
+.textInputLabel {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: #555;
+}
+
+.textInput {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  box-shadow: none;
+  transition: 0.2s;
+  width: 100%;
+}
+
+.textInput:focus {
+  border-color: var(--main-color);
+  transition: 0.2s;
+  outline: none;
+  box-shadow: 0 0 5px 0px var(--main-color);
+}
+
+.errorMessage {
+  margin-top: 0.2rem;
+  color: var(--error-color);
+}

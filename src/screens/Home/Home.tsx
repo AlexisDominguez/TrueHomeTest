@@ -3,6 +3,7 @@ import ImageSlide from "../../components/ImageSlide";
 import FlightSearch from "../../modules/FlightSearch";
 import Card from "../../components/Card";
 import FlightSelection from "../../modules/FlightSelection";
+import BookingForm from "../../modules/BookingForm";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
         </Card>
       </ImageSlide>
       <FlightSelection />
+      <BookingForm />
     </MainLayout>
   );
 };
