@@ -3,10 +3,20 @@ import styles from "./Card.module.css";
 
 interface ICardProps {
   children: ReactNode;
+  softCard?: boolean;
+  containerClass?: string;
 }
 
-const Card: FC<ICardProps> = ({ children }) => {
-  return <div className={styles.card}>{children}</div>;
+const Card: FC<ICardProps> = ({ children, softCard, containerClass }) => {
+  return (
+    <div
+      className={`${
+        softCard ? styles.softCard : styles.card
+      } ${containerClass}`}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default Card;

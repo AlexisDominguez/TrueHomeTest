@@ -2,8 +2,9 @@ import { ChangeEvent, useState } from "react";
 import Select from "../../components/Select";
 import DatePicker from "../../components/DatePicker";
 import InputNumber from "../../components/InputNumber";
-import styles from "./Booking.module.css";
+import styles from "./FlightSearch.module.css";
 import { parseStringToDate } from "../../utils/parseStringToDate";
+import Button from "../../components/Button";
 
 const citiesMock = [
   "Chihuahua",
@@ -64,62 +65,67 @@ const Booking = () => {
     }
   };
 
+  const handleSubmit = () => {};
+
   const numberOfPassengers = Number(passengers);
 
   return (
-    <div className={styles.bookingContainer}>
-      <Select
-        id="origin"
-        label="Ciudad de origen"
-        error={errors.originCity}
-        errorMessage="Selecciona una ciudad válida"
-        options={citiesMock}
-        onChange={originCityHandler}
-        containerClassName={styles.selectContainer}
-      />
-      <Select
-        id="destination"
-        label="Ciudad de destino"
-        error={errors.destinationCity}
-        errorMessage="Selecciona una ciudad válida"
-        options={availableDestinationCities}
-        onChange={destinationCityHandler}
-        containerClassName={styles.selectContainer}
-      />
-      <DatePicker
-        label="Salida"
-        error={false}
-        errorMessage="Selecciona una fecha válida"
-        containerClassName={styles.DatePickerContainer}
-        max={endDate}
-        onChange={handleStartDate}
-      />
-      <DatePicker
-        label="Regreso"
-        error={false}
-        errorMessage="Selecciona una fecha válida"
-        containerClassName={styles.dateContainer}
-        min={startDate}
-        onChange={handleEndDate}
-      />
-      <InputNumber
-        min={0}
-        max={9}
-        step={1}
-        value={passengers}
-        onChange={handlePassengers}
-        containerClassName={styles.inputNumberContainer}
-        label="Número de pasajeros"
-        error={numberOfPassengers < 1 || numberOfPassengers > 8}
-        errorMessage={
-          numberOfPassengers < 1
-            ? "El número mínimo de pasajeros es 1"
-            : numberOfPassengers > 8
-            ? "El número máximo de pasageros es 8"
-            : ""
-        }
-      />
-    </div>
+    <section>
+      <div className={styles.bookingContainer}>
+        <Select
+          id="origin"
+          label="Ciudad de origen"
+          error={errors.originCity}
+          errorMessage="Selecciona una ciudad válida"
+          options={citiesMock}
+          onChange={originCityHandler}
+          containerClassName={styles.selectContainer}
+        />
+        <Select
+          id="destination"
+          label="Ciudad de destino"
+          error={errors.destinationCity}
+          errorMessage="Selecciona una ciudad válida"
+          options={availableDestinationCities}
+          onChange={destinationCityHandler}
+          containerClassName={styles.selectContainer}
+        />
+        <DatePicker
+          label="Salida"
+          error={false}
+          errorMessage="Selecciona una fecha válida"
+          containerClassName={styles.DatePickerContainer}
+          max={endDate}
+          onChange={handleStartDate}
+        />
+        <DatePicker
+          label="Regreso"
+          error={false}
+          errorMessage="Selecciona una fecha válida"
+          containerClassName={styles.dateContainer}
+          min={startDate}
+          onChange={handleEndDate}
+        />
+        <InputNumber
+          min={0}
+          max={9}
+          step={1}
+          value={passengers}
+          onChange={handlePassengers}
+          containerClassName={styles.inputNumberContainer}
+          label="Número de pasajeros"
+          error={numberOfPassengers < 1 || numberOfPassengers > 8}
+          errorMessage={
+            numberOfPassengers < 1
+              ? "El número mínimo de pasajeros es 1"
+              : numberOfPassengers > 8
+              ? "El número máximo de pasageros es 8"
+              : ""
+          }
+        />
+      </div>
+      <Button onClick={handleSubmit}>Buscar vuelos</Button>
+    </section>
   );
 };
 

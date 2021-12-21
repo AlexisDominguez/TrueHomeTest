@@ -1,0 +1,31 @@
+.button {
+  background-color: var(--main-color);
+  border-radius: 6px;
+  border-width: 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  height: 3rem;
+  font-size: 1.2rem;
+  margin: 2rem 0 0.5rem;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  transition: all 0.2s, box-shadow 0.08s ease-in;
+  width: 100%;
+}
+
+.button:disabled {
+  cursor: default;
+  background-color: var(--main-color-disabled);
+}
+
+.button:focus {
+  background-color: var(--main-color-hover);
+}
+
+.button:hover {
+  background-color: var(--main-color-hover);
+}

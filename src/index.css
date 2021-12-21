@@ -1,5 +1,7 @@
 :root {
   --main-color: #0361e4;
+  --main-color-disabled: #4c8ce6;
+  --main-color-hover: #004db8;
   --main-color-shadow: rgba(0, 0, 0, 0.1);
   --error-color: rgb(255, 0, 0);
 }

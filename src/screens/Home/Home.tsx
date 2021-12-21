@@ -1,16 +1,18 @@
 import MainLayout from "../../layout/MainLayout";
 import ImageSlide from "../../components/ImageSlide";
-import Booking from "../../modules/Booking";
+import FlightSearch from "../../modules/FlightSearch";
 import Card from "../../components/Card";
+import FlightSelection from "../../modules/FlightSelection";
 
 const Home = () => {
   return (
     <MainLayout>
       <ImageSlide>
         <Card>
-          <Booking />
+          <FlightSearch />
         </Card>
       </ImageSlide>
+      <FlightSelection />
     </MainLayout>
   );
 };
