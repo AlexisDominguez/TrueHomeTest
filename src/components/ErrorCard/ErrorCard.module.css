@@ -1,0 +1,17 @@
+.errorCardTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.errorCardSubTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.errorCardContainer {
+  margin: 1.5rem;
+  width: auto;
+}

@@ -112,7 +112,9 @@ const Booking = () => {
       return null;
     });
 
-    dispatch(saveAvailableFlights(availableFligts || []));
+    dispatch(
+      saveAvailableFlights(originCity, passengers, availableFligts || [])
+    );
   };
 
   const numberOfPassengers = Number(passengers);

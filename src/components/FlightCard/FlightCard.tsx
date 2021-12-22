@@ -91,7 +91,7 @@ const FlightCard: FC<IFlightCardProps> = (props) => {
             }
             onClick={() => handleBooking(flightId)}
           >
-            {inShoppingCart ? "Cancelar" : "Reservar"}
+            {inShoppingCart ? "Cancelar" : "Agregar al carrito"}
           </Button>
         </div>
       </Card>

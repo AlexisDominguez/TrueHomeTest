@@ -1,6 +1,6 @@
-import { IFlight } from "../models/Flights";
+import { IAvailableFlights, IFlight } from "../models/Flights";
 import { getFlights } from "../services/flightSearch";
-import { GET_FLIGHTS, SAVE_AVAILABLE_FLIGHTS } from "./types";
+import { BOOK_FLIGHTS, GET_FLIGHTS, SAVE_AVAILABLE_FLIGHTS } from "./types";
 
 export const getAvailableFlights = () => {
   const flights = getFlights();
@@ -11,9 +11,24 @@ export const getAvailableFlights = () => {
   };
 };
 
-export const saveAvailableFlights = (availableFlights: IFlight[]) => {
+export const saveAvailableFlights = (
+  originCity: string,
+  passengers: number | string,
+  availableFlights: IFlight[]
+) => {
   return {
     type: SAVE_AVAILABLE_FLIGHTS,
-    payload: availableFlights,
+    payload: {
+      originCity,
+      passengers,
+      availableFlights,
+    },
+  };
+};
+
+export const bookFlights = (bookedFlight: IAvailableFlights[]) => {
+  return {
+    type: BOOK_FLIGHTS,
+    payload: bookedFlight,
   };
 };

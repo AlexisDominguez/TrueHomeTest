@@ -13,4 +13,14 @@ export interface IFlight {
   departureDate: Date | string;
   arrivalTime: Date | string;
   costByPassenger: number | string;
+  flightId: string;
+}
+
+export interface IAvailableFlights {
+  originCity: string;
+  availableFlights: IFlight[];
+  passengers: number;
+}
+export interface IBookedFlights {
+  bookedFlights: IAvailableFlights[];
 }
