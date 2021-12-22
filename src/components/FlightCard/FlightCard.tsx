@@ -12,6 +12,7 @@ interface IFlightCardProps {
   flightPrice: number;
   flightId: string;
   handleBooking: (flightId: string) => void;
+  inShoppingCart?: boolean;
 }
 
 const FlightCard: FC<IFlightCardProps> = (props) => {
@@ -23,35 +24,74 @@ const FlightCard: FC<IFlightCardProps> = (props) => {
     flightId,
     flightPrice,
     handleBooking,
+    inShoppingCart,
   } = props;
 
   return (
-    <div className={styles.flightCard}>
+    <div
+      className={`${styles.flightCard} ${
+        inShoppingCart ? styles.defaultFontColor : ""
+      }`}
+    >
       <Card containerClass={styles.flightCardContainer} softCard>
         <div className={styles.flightCitiesContainer}>
           <div className={styles.flightCityContainer}>
-            <div className={styles.flightCity}>{originCityName}</div>{" "}
-            <div className={styles.flightTime}>
+            <div
+              className={
+                inShoppingCart ? styles.lowerFontSize : styles.flightCity
+              }
+            >
+              {originCityName}
+            </div>{" "}
+            <div
+              className={
+                inShoppingCart ? styles.lowerFontSize : styles.flightTime
+              }
+            >
               {moment(originCityTime).format("HH:mm")}
             </div>
           </div>
           <div className={styles.flightCityContainer}>
-            <div className={styles.flightCity}>{destinationCityName}</div>
-            <div className={styles.flightTime}>
+            <div
+              className={
+                inShoppingCart ? styles.lowerFontSize : styles.flightCity
+              }
+            >
+              {destinationCityName}
+            </div>
+            <div
+              className={
+                inShoppingCart ? styles.lowerFontSize : styles.flightTime
+              }
+            >
               {moment(destinationCityTime).format("HH:mm")}
             </div>
           </div>
         </div>
         <div className={styles.flightPriceContainer}>
           <div>
-            <div className={styles.flightPriceTag}>Precio por persona</div>
-            <div className={styles.flightPrice}>${flightPrice} MXN</div>
+            <div
+              className={
+                inShoppingCart ? styles.lowerFontSize : styles.flightPriceTag
+              }
+            >
+              Precio
+            </div>
+            <div
+              className={
+                inShoppingCart ? styles.lowerFontSize : styles.flightPrice
+              }
+            >
+              ${flightPrice} MXN
+            </div>
           </div>
           <Button
-            containerClass={styles.flightBookingButton}
+            containerClass={
+              inShoppingCart ? styles.removeMargin : styles.flightBookingButton
+            }
             onClick={() => handleBooking(flightId)}
           >
-            Reservar
+            {inShoppingCart ? "Cancelar" : "Reservar"}
           </Button>
         </div>
       </Card>

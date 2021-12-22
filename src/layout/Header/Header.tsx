@@ -1,3 +1,4 @@
+import ShoppingCart from "../../modules/ShoppingCart";
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -5,7 +6,7 @@ const Header = () => {
     <nav className={styles.header}>
       <div>TrueHome Flights</div>
       <div>
-        <i className="fas fa-shopping-cart"></i>
+        <ShoppingCart />
       </div>
     </nav>
   );
