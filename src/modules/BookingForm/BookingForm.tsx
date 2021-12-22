@@ -41,8 +41,6 @@ const BookingForm = () => {
 
   const handleConfirmBooking = (): void => {};
 
-  console.log(isValidForm());
-
   return (
     <Card containerClass={styles.bookingFormContainer} softCard>
       <div className={styles.bookingFormTitle}>

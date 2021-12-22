@@ -1,0 +1,26 @@
+.successCardTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.successCardSubTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.successCardContainer {
+  margin: 1.5rem;
+  width: auto;
+}
+
+.successCardRow {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0;
+}
+
+.successCardRowTitle {
+  width: 11rem;
+  font-weight: bold;
+}
