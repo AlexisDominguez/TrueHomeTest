@@ -1,7 +1,16 @@
-import { GET_FLIGHTS } from "./types";
+import { GET_FLIGHTS, SAVE_AVAILABLE_FLIGHTS } from "./types";
+import { IFlights, IFlight } from "../models/Flights";
 
-const INITAL_STATE = {
-  flights: {},
+interface IINITIAL_STATE {
+  flights: IFlights;
+  availableFlights: IFlight[];
+}
+
+const INITAL_STATE: IINITIAL_STATE = {
+  flights: {
+    cities: [],
+  },
+  availableFlights: [],
 };
 
 const reducer = (state = INITAL_STATE, action: any) => {
@@ -10,6 +19,11 @@ const reducer = (state = INITAL_STATE, action: any) => {
       return {
         ...state,
         flights: action.payload,
+      };
+    case SAVE_AVAILABLE_FLIGHTS:
+      return {
+        ...state,
+        availableFlights: action.payload,
       };
     default:
       return state;

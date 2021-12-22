@@ -5,14 +5,38 @@
         "flights": [
           {
             "city": "chihuahua",
-            "departureDate": "14/12/2021",
-            "returnDate": "16/12/2021",
+            "departureDate": "2021-12-16T00:00:00+00:00",
+            "arrivalTime": "2021-12-18T00:00:00+00:00",
             "costByPassenger": "1500"
           },
           {
             "city": "guadalajara",
-            "departureDate": "15/12/2021",
-            "returnDate": "16/12/2021",
+            "departureDate": "2021-12-17T02:00:00+00:00",
+            "arrivalTime": "2021-12-19T00:00:00+00:00",
+            "costByPassenger": "1200"
+          },
+          {
+            "city": "guadalajara",
+            "departureDate": "2021-12-17T04:00:00+00:00",
+            "arrivalTime": "2021-12-19T00:00:00+00:00",
+            "costByPassenger": "1200"
+          },
+          {
+            "city": "guadalajara",
+            "departureDate": "2021-12-15T06:00:00+00:00",
+            "arrivalTime": "2021-12-19T00:00:00+00:00",
+            "costByPassenger": "1200"
+          },
+          {
+            "city": "guadalajara",
+            "departureDate": "2021-12-18T06:00:00+00:00",
+            "arrivalTime": "2021-12-19T00:00:00+00:00",
+            "costByPassenger": "1200"
+          },
+          {
+            "city": "guadalajara",
+            "departureDate": "2021-12-17T08:00:00+00:00",
+            "arrivalTime": "2021-12-19T00:00:00+00:00",
             "costByPassenger": "1200"
           }
         ]
@@ -23,14 +47,14 @@
         "flights": [
           {
             "city": "mexico",
-            "departureDate": "19/12/2021",
-            "returnDate": "21/12/2021",
+            "departureDate": "2021-12-18T00:00:00+00:00",
+            "arrivalTime": "2021-12-20:00:00+00:00",
             "costByPassenger": "1400"
           },
           {
             "city": "guadalajara",
-            "departureDate": "20/12/2021",
-            "returnDate": "22/12/2021",
+            "departureDate": "2021-12-19T00:00:00+00:00",
+            "arrivalTime": "2021-12-21T00:00:00+00:00",
             "costByPassenger": "1800"
           }
         ]
@@ -41,14 +65,14 @@
         "flights": [
           {
             "city": "chihuahua",
-            "departureDate": "23/12/2021",
-            "returnDate": "25/12/2021",
+            "departureDate": "2021-12-20T00:00:00+00:00",
+            "arrivalTime": "2021-12-22T00:00:00+00:00",
             "costByPassenger": "1100"
           },
           {
             "city": "guadalajara",
-            "departureDate": "24/12/2021",
-            "returnDate": "26/12/2021",
+            "departureDate": "2021-12-21T00:00:00+00:00",
+            "arrivalTime": "2021-12-23T00:00:00+00:00",
             "costByPassenger": "1900"
           }
         ]

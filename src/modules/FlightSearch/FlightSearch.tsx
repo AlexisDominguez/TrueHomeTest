@@ -4,8 +4,10 @@ import DatePicker from "../../components/DatePicker";
 import InputNumber from "../../components/InputNumber";
 import styles from "./FlightSearch.module.css";
 import { parseStringToDate } from "../../utils/parseStringToDate";
+import { useDispatch, useSelector } from "../../redux/hooks";
 import Button from "../../components/Button";
 import moment from "moment";
+import { saveAvailableFlights } from "../../redux/actions";
 
 const citiesMock = [
   "Chihuahua",
@@ -22,8 +24,10 @@ const Booking = () => {
   const [originCity, setOriginCity] = useState<string>("");
   const [destinationCity, setDestinationCity] = useState<string>("");
   const [startDate, setStartDate] = useState<Date | undefined>();
-  const [endDate, setEndDate] = useState<Date | undefined>();
   const [passengers, setPassengers] = useState<number | string>(1);
+
+  const allFlights = useSelector((state) => state.flights);
+  const dispatch = useDispatch();
 
   const availableDestinationCities = citiesMock.filter(
     (cities) => cities !== originCity
@@ -56,10 +60,6 @@ const Booking = () => {
     setStartDate(parseStringToDate(event.target.value));
   };
 
-  const handleEndDate = (event: ChangeEvent<HTMLInputElement>): void => {
-    setEndDate(parseStringToDate(event.target.value));
-  };
-
   const handlePassengers = (event: ChangeEvent<HTMLInputElement>): void => {
     if (Number.isInteger(Number(event.target.value))) {
       setPassengers(Number(event.target.value) || "");
@@ -73,9 +73,7 @@ const Booking = () => {
       errors.destinationCity ||
       !destinationCity ||
       !moment(startDate).isValid() ||
-      !moment(endDate).isValid() ||
       !startDate ||
-      !endDate ||
       numberOfPassengers < 1 ||
       numberOfPassengers > 8
     ) {
@@ -85,7 +83,37 @@ const Booking = () => {
     return true;
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    if (!isValidForm) return;
+
+    const selectedOriginCity = allFlights.cities.find(
+      (city) => city[originCity.toLocaleLowerCase()]
+    );
+
+    const dateWithoutUTCOffset = moment(startDate).add(
+      moment(startDate).utcOffset() * -1,
+      "minutes"
+    );
+
+    const availableFligts = selectedOriginCity?.[
+      originCity.toLocaleLowerCase()
+    ].flights.filter((flight) => {
+      if (flight.city === destinationCity.toLocaleLowerCase()) {
+        if (moment(dateWithoutUTCOffset).isSame(flight.departureDate, "date")) {
+          if (
+            moment
+              .utc(dateWithoutUTCOffset)
+              .isSameOrBefore(flight.departureDate)
+          )
+            return flight;
+        }
+      }
+
+      return null;
+    });
+
+    dispatch(saveAvailableFlights(availableFligts || []));
+  };
 
   const numberOfPassengers = Number(passengers);
 
@@ -115,17 +143,9 @@ const Booking = () => {
           error={false}
           errorMessage="Selecciona una fecha válida"
           containerClassName={styles.DatePickerContainer}
-          max={endDate}
           onChange={handleStartDate}
         />
-        <DatePicker
-          label="Regreso"
-          error={false}
-          errorMessage="Selecciona una fecha válida"
-          containerClassName={styles.dateContainer}
-          min={startDate}
-          onChange={handleEndDate}
-        />
+
         <InputNumber
           min={0}
           max={9}

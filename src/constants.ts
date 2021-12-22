@@ -1,1 +1,2 @@
 export const STANDARD_INPUT_DATE_FORMAT = "YYYY-MM-DD";
+export const STANDARD_DATE_FORMAT = "DD-MM-YYYY";
