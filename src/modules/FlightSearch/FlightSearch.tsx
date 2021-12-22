@@ -5,6 +5,7 @@ import InputNumber from "../../components/InputNumber";
 import styles from "./FlightSearch.module.css";
 import { parseStringToDate } from "../../utils/parseStringToDate";
 import Button from "../../components/Button";
+import moment from "moment";
 
 const citiesMock = [
   "Chihuahua",
@@ -63,6 +64,25 @@ const Booking = () => {
     if (Number.isInteger(Number(event.target.value))) {
       setPassengers(Number(event.target.value) || "");
     }
+  };
+
+  const isValidForm = (): boolean => {
+    if (
+      errors.originCity ||
+      !originCity ||
+      errors.destinationCity ||
+      !destinationCity ||
+      !moment(startDate).isValid() ||
+      !moment(endDate).isValid() ||
+      !startDate ||
+      !endDate ||
+      numberOfPassengers < 1 ||
+      numberOfPassengers > 8
+    ) {
+      return false;
+    }
+
+    return true;
   };
 
   const handleSubmit = () => {};
@@ -124,7 +144,9 @@ const Booking = () => {
           }
         />
       </div>
-      <Button onClick={handleSubmit}>Buscar vuelos</Button>
+      <Button disabled={!isValidForm()} onClick={handleSubmit}>
+        Buscar vuelos
+      </Button>
     </section>
   );
 };
