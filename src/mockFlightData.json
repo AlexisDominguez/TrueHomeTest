@@ -1,0 +1,58 @@
+{
+  "cities": [
+    {
+      "mexico": {
+        "flights": [
+          {
+            "city": "chihuahua",
+            "departureDate": "14/12/2021",
+            "returnDate": "16/12/2021",
+            "costByPassenger": "1500"
+          },
+          {
+            "city": "guadalajara",
+            "departureDate": "15/12/2021",
+            "returnDate": "16/12/2021",
+            "costByPassenger": "1200"
+          }
+        ]
+      }
+    },
+    {
+      "chihuahua": {
+        "flights": [
+          {
+            "city": "mexico",
+            "departureDate": "19/12/2021",
+            "returnDate": "21/12/2021",
+            "costByPassenger": "1400"
+          },
+          {
+            "city": "guadalajara",
+            "departureDate": "20/12/2021",
+            "returnDate": "22/12/2021",
+            "costByPassenger": "1800"
+          }
+        ]
+      }
+    },
+    {
+      "guadalajara": {
+        "flights": [
+          {
+            "city": "chihuahua",
+            "departureDate": "23/12/2021",
+            "returnDate": "25/12/2021",
+            "costByPassenger": "1100"
+          },
+          {
+            "city": "guadalajara",
+            "departureDate": "24/12/2021",
+            "returnDate": "26/12/2021",
+            "costByPassenger": "1900"
+          }
+        ]
+      }
+    }
+  ]
+}

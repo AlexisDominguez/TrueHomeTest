@@ -5,8 +5,17 @@ import Card from "../../components/Card";
 import FlightSelection from "../../modules/FlightSelection";
 import BookingForm from "../../modules/BookingForm";
 import SuccessCard from "../../components/SuccessCard";
+import { useDispatch } from "../../redux/hooks";
+import { useEffect } from "react";
+import { getAvailableFlights } from "../../redux/actions";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAvailableFlights());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <MainLayout>
       <ImageSlide>
