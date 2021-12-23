@@ -69,7 +69,7 @@ const FlightCard: FC<IFlightCardProps> = (props) => {
           </div>
         </div>
         <div className={styles.flightPriceContainer}>
-          <div>
+          <div className={styles.flightPriceModule}>
             <div
               className={
                 inShoppingCart ? styles.lowerFontSize : styles.flightPriceTag

@@ -62,3 +62,47 @@
 .flightPrice {
   font-size: 1.5rem;
 }
+
+@media (max-width: 830px) {
+  .flightCitiesContainer {
+    width: 100%;
+  }
+
+  .flightCardContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flightPriceContainer {
+    flex-direction: column;
+  }
+
+  .flightPriceModule {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  .flightPriceTag {
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 100%;
+  }
+
+  .flightPrice {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+  .flightPriceContainer {
+    width: 100%;
+  }
+
+  .flightBookingButton {
+    margin-top: 1.5rem;
+    display: block;
+    width: 100%;
+    max-width: inherit;
+  }
+}

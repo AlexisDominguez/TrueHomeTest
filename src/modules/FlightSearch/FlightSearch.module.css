@@ -14,3 +14,24 @@
 .inputNumberContainer {
   width: 170px;
 }
+
+@media (max-width: 830px) {
+  .selectContainer {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .DatePickerContainer {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .inputNumberContainer {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .bookingContainer {
+    flex-direction: column;
+  }
+}
