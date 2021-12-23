@@ -67,7 +67,10 @@ const FlightSelection = () => {
           />
         ))
       ) : (
-        <ErrorCard />
+        <ErrorCard
+          title="¡No se encontraron vuelos disponbiles!"
+          subTitle="No se encontraron vuelos disponibles para este día."
+        />
       )}
     </section>
   );

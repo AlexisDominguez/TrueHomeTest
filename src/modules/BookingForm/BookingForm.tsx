@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, Dispatch, FC, SetStateAction, useState } from "react";
 import Card from "../../components/Card";
 import TextInput from "../../components/TextInput";
 import styles from "./BookingForm.module.css";
@@ -7,8 +7,15 @@ import Button from "../../components/Button";
 import { nameValidation } from "../../utils/nameValidation";
 import { emailValidation } from "../../utils/emailValidation";
 import { isStringEmpty } from "../../utils/notEmptyStringValidation";
+import { useDispatch } from "../../redux/hooks";
+import { bookFlights, saveCustomer } from "../../redux/actions";
 
-const BookingForm = () => {
+interface IBookingFormProps {
+  success: boolean;
+  setSuccess: Dispatch<SetStateAction<boolean>>;
+}
+
+const BookingForm: FC<IBookingFormProps> = ({ success, setSuccess }) => {
   const [customer, setCustomer] = useState<ICustomer>({
     name: "",
     lastName: "",
@@ -16,6 +23,8 @@ const BookingForm = () => {
     address: "",
     email: "",
   });
+
+  const dispatch = useDispatch();
 
   const isValidForm = (): boolean => {
     const { name, lastName, secondLastName, address, email } = customer;
@@ -39,7 +48,11 @@ const BookingForm = () => {
     setCustomer({ ...customer, [event.target.name]: event.target.value });
   };
 
-  const handleConfirmBooking = (): void => {};
+  const handleConfirmBooking = (): void => {
+    dispatch(bookFlights([]));
+    dispatch(saveCustomer(customer));
+    setSuccess(true);
+  };
 
   return (
     <Card containerClass={styles.bookingFormContainer} softCard>

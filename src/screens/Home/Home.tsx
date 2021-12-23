@@ -2,34 +2,52 @@ import MainLayout from "../../layout/MainLayout";
 import ImageSlide from "../../components/ImageSlide";
 import FlightSearch from "../../modules/FlightSearch";
 import Card from "../../components/Card";
+import Loader from "../../components/Loader";
 import FlightSelection from "../../modules/FlightSelection";
-import BookingForm from "../../modules/BookingForm";
-import SuccessCard from "../../components/SuccessCard";
+import styles from "./Home.module.css";
 import { useDispatch } from "../../redux/hooks";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAvailableFlights } from "../../redux/actions";
+import { getFlights } from "../../services/flightSearch";
 
 const Home = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+
   const dispatch = useDispatch();
 
+  const getAllFlights = async () => {
+    setLoading(true);
+    try {
+      const flights = await getFlights();
+      dispatch(getAvailableFlights(flights));
+    } catch (error) {
+      throw new Error(error as string);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    dispatch(getAvailableFlights());
+    getAllFlights();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <MainLayout>
-      <ImageSlide>
-        <Card>
-          <FlightSearch />
-        </Card>
-      </ImageSlide>
-      <SuccessCard
-        fullName="Alexis Ariel Dominguez Sanchez"
-        address="Calle 1 Oriente 100B, Delicias Chihuahua"
-        email="alexisdominguezsanchez3@gmail.com"
-      />
-      <FlightSelection />
-      <BookingForm />
+      {!loading ? (
+        <>
+          <ImageSlide>
+            <Card>
+              <FlightSearch />
+            </Card>
+          </ImageSlide>
+          <FlightSelection />
+        </>
+      ) : (
+        <div className={styles.homeLoaderContainer}>
+          <Loader />
+          <h4>Cargando...</h4>
+        </div>
+      )}
     </MainLayout>
   );
 };

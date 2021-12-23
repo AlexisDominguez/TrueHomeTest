@@ -1,10 +1,13 @@
-import { IAvailableFlights, IFlight } from "../models/Flights";
-import { getFlights } from "../services/flightSearch";
-import { BOOK_FLIGHTS, GET_FLIGHTS, SAVE_AVAILABLE_FLIGHTS } from "./types";
+import { ICustomer } from "../models/Customer";
+import { IAvailableFlights, IFlight, IFlights } from "../models/Flights";
+import {
+  BOOK_FLIGHTS,
+  GET_FLIGHTS,
+  SAVE_AVAILABLE_FLIGHTS,
+  SAVE_CUSTOMER,
+} from "./types";
 
-export const getAvailableFlights = () => {
-  const flights = getFlights();
-
+export const getAvailableFlights = (flights: IFlights) => {
   return {
     type: GET_FLIGHTS,
     payload: flights,
@@ -30,5 +33,12 @@ export const bookFlights = (bookedFlight: IAvailableFlights[]) => {
   return {
     type: BOOK_FLIGHTS,
     payload: bookedFlight,
+  };
+};
+
+export const saveCustomer = (customer: ICustomer) => {
+  return {
+    type: SAVE_CUSTOMER,
+    payload: customer,
   };
 };

@@ -1,10 +1,17 @@
-import { BOOK_FLIGHTS, GET_FLIGHTS, SAVE_AVAILABLE_FLIGHTS } from "./types";
+import {
+  BOOK_FLIGHTS,
+  GET_FLIGHTS,
+  SAVE_AVAILABLE_FLIGHTS,
+  SAVE_CUSTOMER,
+} from "./types";
 import { IFlights, IAvailableFlights } from "../models/Flights";
+import { ICustomer } from "../models/Customer";
 
 interface IINITIAL_STATE {
   flights: IFlights;
   availableFlights: IAvailableFlights;
   bookedFlights: IAvailableFlights[];
+  customer: ICustomer;
 }
 
 const INITAL_STATE: IINITIAL_STATE = {
@@ -17,6 +24,13 @@ const INITAL_STATE: IINITIAL_STATE = {
     passengers: 0,
   },
   bookedFlights: [],
+  customer: {
+    name: "",
+    lastName: "",
+    secondLastName: "",
+    email: "",
+    address: "",
+  },
 };
 
 const reducer = (state = INITAL_STATE, action: any) => {
@@ -35,6 +49,12 @@ const reducer = (state = INITAL_STATE, action: any) => {
       return {
         ...state,
         bookedFlights: action.payload,
+      };
+
+    case SAVE_CUSTOMER:
+      return {
+        ...state,
+        customer: action.payload,
       };
     default:
       return state;
