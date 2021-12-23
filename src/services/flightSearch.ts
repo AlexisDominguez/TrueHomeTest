@@ -1,4 +1,3 @@
-import mockFlightData from "../mockFlightData.json";
 import { db } from "../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
 

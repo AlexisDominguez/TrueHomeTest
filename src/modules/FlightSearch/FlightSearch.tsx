@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "../../redux/hooks";
 import Button from "../../components/Button";
 import moment from "moment";
 import { saveAvailableFlights } from "../../redux/actions";
+import { IFlight } from "../../models/Flights";
 
 const citiesMock = [
   "Chihuahua",
@@ -27,6 +28,11 @@ const Booking = () => {
   const [passengers, setPassengers] = useState<number | string>(1);
 
   const allFlights = useSelector((state) => state.flights);
+  const bookedFlights = useSelector((state) => state.bookedFlights);
+  const flights = useSelector((state) => state.availableFlights);
+
+  const { availableFlights } = flights;
+
   const dispatch = useDispatch();
 
   const availableDestinationCities = citiesMock.filter(
@@ -83,6 +89,19 @@ const Booking = () => {
     return true;
   };
 
+  const removeFlightsBooked = (flights: IFlight[] | undefined) => {
+    if (!flights) return [];
+    let newAvailableFlights: IFlight[] = flights.slice(0);
+
+    const bookedFlightsIds = bookedFlights.map(
+      (bookedFlight) => bookedFlight.availableFlights[0].flightId
+    );
+
+    return newAvailableFlights.filter(
+      (flight) => !bookedFlightsIds.includes(flight.flightId)
+    );
+  };
+
   const handleSubmit = () => {
     if (!isValidForm) return;
 
@@ -113,7 +132,11 @@ const Booking = () => {
     });
 
     dispatch(
-      saveAvailableFlights(originCity, passengers, availableFligts || [])
+      saveAvailableFlights(
+        originCity,
+        passengers,
+        removeFlightsBooked(availableFligts)
+      )
     );
   };
 
