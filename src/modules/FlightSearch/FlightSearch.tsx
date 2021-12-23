@@ -29,9 +29,6 @@ const Booking = () => {
 
   const allFlights = useSelector((state) => state.flights);
   const bookedFlights = useSelector((state) => state.bookedFlights);
-  const flights = useSelector((state) => state.availableFlights);
-
-  const { availableFlights } = flights;
 
   const dispatch = useDispatch();
 
