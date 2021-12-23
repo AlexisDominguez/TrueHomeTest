@@ -22,3 +22,22 @@
   margin: 0;
   width: auto;
 }
+
+@media (max-width: 830px) {
+  .shoppingCartMainContainer {
+    height: 70%;
+  }
+
+  .shoppingCartTotalPrice {
+    font-size: 1rem;
+  }
+
+  .shoppingCartActionsContainer {
+    padding: 1rem;
+  }
+
+  .shoppingCartConfirmBooking {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
+}

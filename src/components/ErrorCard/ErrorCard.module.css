@@ -15,3 +15,16 @@
   margin: 1.5rem;
   width: auto;
 }
+
+@media (max-width: 830px) {
+  .errorCardTitle {
+    font-size: 1.2rem;
+  }
+  .errorCardSubTitle {
+    font-size: 1rem;
+  }
+
+  .errorCardContainer {
+    margin: 1rem;
+  }
+}

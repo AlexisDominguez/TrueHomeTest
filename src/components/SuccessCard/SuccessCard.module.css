@@ -2,6 +2,7 @@
   font-size: 2rem;
   margin-bottom: 1rem;
   font-weight: bold;
+  text-align: center;
 }
 
 .successCardSubTitle {
@@ -12,6 +13,8 @@
 .successCardContainer {
   margin: 1.5rem;
   width: auto;
+  font-weight: normal;
+  font-size: 1rem;
 }
 
 .successCardRow {
@@ -23,4 +26,25 @@
 .successCardRowTitle {
   width: 11rem;
   font-weight: bold;
+}
+
+@media (max-width: 830px) {
+  .successCardContainer {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+  .successCardTitle {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .successCardSubTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .successCardRow {
+    flex-direction: column;
+  }
 }

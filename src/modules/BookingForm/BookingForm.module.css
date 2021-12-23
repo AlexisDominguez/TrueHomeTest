@@ -30,3 +30,20 @@
   font-size: 1.3rem;
   margin-bottom: 1rem;
 }
+
+@media (max-width: 830px) {
+  .bookingFormContainer {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .bookingFormNameInputs {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .bookingFromInputContainer {
+    width: 100%;
+  }
+}

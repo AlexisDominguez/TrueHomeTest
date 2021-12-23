@@ -43,3 +43,16 @@
   display: none;
   transition: 1s;
 }
+
+@media (max-width: 830px) {
+  .modalHeader {
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .modal-main {
+    width: 95%;
+    height: 95vh;
+    overflow: auto;
+  }
+}

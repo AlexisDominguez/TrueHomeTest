@@ -105,4 +105,14 @@
     width: 100%;
     max-width: inherit;
   }
+
+  .lowerFontSize {
+    font-size: 1rem !important;
+    width: 100%;
+  }
+
+  .removeMargin {
+    margin: 1rem 0 0 !important;
+    width: inherit !important;
+  }
 }

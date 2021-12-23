@@ -95,7 +95,9 @@ const ShoppingCart = () => {
         )}
         {!!totalPrice && !confirmReservation && (
           <div className={styles.shoppingCartActionsContainer}>
-            <div>Precio Total: ${totalPrice} MXN</div>
+            <div className={styles.shoppingCartTotalPrice}>
+              Precio Total: ${totalPrice} MXN
+            </div>
             <Button
               containerClass={styles.shoppingCartConfirmBooking}
               onClick={handleConfirmBooking}
